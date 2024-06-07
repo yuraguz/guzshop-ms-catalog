@@ -1,0 +1,70 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="01-order-tables:create-order-table" author="iurii.guz">
+        <preConditions>
+            <not>
+                <tableExists tableName="order"/>
+            </not>
+        </preConditions>
+        <createTable tableName="order">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="true"/>
+            </column>
+            <column name="count" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+            <column name="amount" type="number">
+                <constraints nullable="true"/>
+            </column>
+            <column name="currency" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="02-order-tables:create-order-item-table" author="iurii.guz">
+        <preConditions>
+            <not>
+                <tableExists tableName="order_item"/>
+            </not>
+        </preConditions>
+        <createTable tableName="order_item">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="order_id" type="uuid">
+                <constraints foreignKeyName="fk_order_item_order"
+                             referencedTableName="order"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="amount" type="number">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="text">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

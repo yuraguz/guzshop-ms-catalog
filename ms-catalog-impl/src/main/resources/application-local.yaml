@@ -1,0 +1,10 @@
+# spring
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5438/MS_SKELETON
+    username: MS_SKELETON
+    password: MS_SKELETON
+
+server:
+  port: 8082

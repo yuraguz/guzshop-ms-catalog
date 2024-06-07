@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  master:
+    image: chrislusf/seaweedfs:dev
+    ports:
+      - 9333:9333
+      - 19333:19333
+    command: "master -ip=master"
+
+  volume:
+    image: chrislusf/seaweedfs:dev
+    ports:
+      - 8999:8999
+      - 18999:18999
+    command: 'volume -mserver="master:9333" -ip=volume -port=8999 -port.grpc=18999'
+    depends_on:
+      - master
+
+  filer:
+    image: chrislusf/seaweedfs:dev
+    ports:
+      - 8888:8888
+      - 18888:18888
+    command: 'filer -master="master:9333" -ip.bind=0.0.0.0'
+    depends_on:
+      - master
+      - volume

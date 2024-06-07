@@ -1,0 +1,50 @@
+{
+  "groups": [
+    {
+      "name": "app.ms-skeleton",
+      "type": "ru.napolke.skeleton.impl.properties.ApplicationProperties",
+      "sourceType": "ru.napolke.skeleton.impl.properties.ApplicationProperties"
+    },
+    {
+      "name": "app.seaweedfs",
+      "type": "ru.napolke.skeleton.impl.properties.SeaweedfsProperties",
+      "sourceType": "ru.napolke.skeleton.impl.properties.SeaweedfsProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.ms-skeleton.example-creation-enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "ru.napolke.skeleton.impl.properties.ApplicationProperties"
+    },
+    {
+      "name": "app.seaweedfs.grpc-port",
+      "type": "java.lang.Integer",
+      "description": "Grpc Port",
+      "sourceType": "ru.napolke.skeleton.impl.properties.SeaweedfsProperties",
+      "defaultValue": 18888
+    },
+    {
+      "name": "app.seaweedfs.host",
+      "type": "java.lang.String",
+      "description": "Cluster Host",
+      "sourceType": "ru.napolke.skeleton.impl.properties.SeaweedfsProperties",
+      "defaultValue": "localhost"
+    },
+    {
+      "name": "app.seaweedfs.http-port",
+      "type": "java.lang.Integer",
+      "description": "Http Port",
+      "sourceType": "ru.napolke.skeleton.impl.properties.SeaweedfsProperties",
+      "defaultValue": 8888
+    },
+    {
+      "name": "app.seaweedfs.root-path",
+      "type": "java.lang.String",
+      "description": "Root path for files",
+      "sourceType": "ru.napolke.skeleton.impl.properties.SeaweedfsProperties",
+      "defaultValue": ""
+    }
+  ],
+  "hints": []
+}

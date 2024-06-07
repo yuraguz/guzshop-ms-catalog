@@ -1,0 +1,50 @@
+# spring
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5438/MS_SKELETON
+    username: MS_SKELETON
+    password: MS_SKELETON
+  cloud:
+    bus:
+      env:
+        enabled: true
+      id: ${spring.application.name}
+      ack:
+        enabled: false
+    function:
+      definition: processExternalOrderEvent
+    stream:
+      bindings:
+        processExternalOrderEvent-in-0:
+          destination: external-order-event-topic
+          group: ${spring.application.name}
+        order-event-topic-out-0:
+          destination: order-event-topic
+          group: ${spring.application.name}
+      kafka:
+        binder:
+          brokers: localhost:29092
+          auto-create-topics: false
+    openfeign:
+      okhttp:
+        enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+# actuator endpoints
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+# application configs
+app:
+  ms-catalog:
+    testProperty: local value
+    orderCreationEnabled: true
+    userServiceApiVersion: v1

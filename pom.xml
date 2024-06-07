@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.4</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>ru.guzshop</groupId>
+    <artifactId>ms-catalog</artifactId>
+    <version>0.0.0</version>
+    <name>ms-catalog</name>
+    <description>Project POM</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>ms-catalog-api</module>
+        <module>ms-catalog-impl</module>
+    </modules>
+
+    <properties>
+        <!-- commom / plugins -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jacoco-plugin.version>0.8.8</jacoco-plugin.version>
+        <testcontainers-jooq-codegen-plugin.version>0.0.3</testcontainers-jooq-codegen-plugin.version>
+
+        <!-- dependencies -->
+        <spring-cloud.version>2022.0.3</spring-cloud.version>
+        <hibernate-core.version>6.2.3.Final</hibernate-core.version>
+        <seaweedfs-client.version>3.33</seaweedfs-client.version>
+        <ms-lib-logging.version>0.0.2</ms-lib-logging.version>
+        <mapstruct.version>1.5.3.Final</mapstruct.version>
+        <springdoc.version>1.7.0</springdoc.version>
+        <logback-contrib.version>0.1.5</logback-contrib.version>
+        <janino.version>3.1.9</janino.version>
+        <testcontainers.version>1.18.3</testcontainers.version>
+        <easy-random-core.version>5.0.0</easy-random-core.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- internal -->
+            <dependency>
+                <groupId>ru.guzshop</groupId>
+                <artifactId>ms-catalog-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- external -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jeasy</groupId>
+                <artifactId>easy-random-core</artifactId>
+                <version>${easy-random-core.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${testcontainers.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${testcontainers.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
