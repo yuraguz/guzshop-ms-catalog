@@ -13,6 +13,7 @@ import ru.guzshop.catalog.impl.model.entity.Order;
 
 /**
  * Example of implementation mapstruct mapper (FOR DEMONSTRATION).
+ * fdafdafda.
  */
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
