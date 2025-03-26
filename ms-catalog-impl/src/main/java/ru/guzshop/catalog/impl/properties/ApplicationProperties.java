@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * Example of properties object class (FOR DEMONSTRATION).
+ * fdafdaf fdafda fdafda
  */
 @Getter
 @Setter
